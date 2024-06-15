@@ -74,3 +74,13 @@ let not=!(m>5);
 
 console.log(and,or,not);
 
+let num = 4;
+   if(num%3==0 || num%5==0 || (num%3==0 && num%5==0))
+   {
+     console.log("YES")
+    
+   }
+   else{
+     console.log("NO")
+   }
+   
