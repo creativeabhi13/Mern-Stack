@@ -80,3 +80,115 @@ for (let i = 1; i <= 5; i++) {
     sum = sum + i;}
 }
 console.log(sum);
+
+
+
+// Take two numbers and find product of all numbers between them that satisfy following condition (inclusive range):
+// -> Numbers should be even
+// -> Second last digit of number is 4
+
+// Input:
+// Two lines of input each containing a single integer.
+// Output:
+// A single integer which is the product of all such numbers which follow the above mentioned conditions.
+
+// Example:
+
+// Case 1:
+// Input:
+// 10
+// 20
+// Output:
+// 0
+
+// Case 2:
+// 30
+// 40
+// Output:
+// 40
+  
+  
+   
+     a = 10
+     b = 20
+    let mul = 1
+   let flag = false
+   
+   for(let i = a; i<=b; i++){
+      let last2digit = i%100 
+      let secondLastDigit = parseInt(last2digit/10)
+   
+      if(i%2==0 && secondLastDigit==4){ // 140,142,144,146,148
+        {
+            mul = mul * i
+            flag = true
+        }
+    }}
+if(flag==true){
+    console.log(mul)
+}
+else{
+    console.log(0)
+}
+
+
+// find the factors of the number 
+const num = 12
+
+console.log(`The factors of ${num} is:`);
+
+
+for(let i = 1; i <= num; i++) {
+
+
+    if(num % i == 0) {
+        console.log(i);
+    }
+}
+
+// check the number is prime or not
+let num1=12;
+for(let i=2;i<num1;i++){
+    if(num1%i==0){
+        console.log("not prime")
+        break;
+    }
+    else{
+        console.log("prime")
+        break;
+    }
+}
+
+// Take 10 integers as input and print their product.
+
+// Constraints:
+// 1 <= T <= 100
+
+// Input:
+// Ten lines of input containing ten integers each.
+// Output:
+// Print the product of all the ten integers.
+
+// Example:
+// Input:
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+// 8
+// 9
+// 10
+// Output:
+
+// 3628800
+let m=1;
+let n = new Array(10);
+let a1
+for(let i=0;i<=9;i++){
+n[i]=prompt("enter the number");
+m=m*n[i];
+}
+console.log(m)

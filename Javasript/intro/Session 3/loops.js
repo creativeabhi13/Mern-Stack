@@ -32,3 +32,9 @@ for (let i = 0; i < 5; i++) {
 // condition =>     5<10 => false
 // come out of the loop
 
+// while (condition) { code block }
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}
