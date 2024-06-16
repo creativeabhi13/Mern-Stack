@@ -184,11 +184,5 @@ for(let i=2;i<num1;i++){
 // Output:
 
 // 3628800
-let m=1;
-let n = new Array(10);
-let a1
-for(let i=0;i<=9;i++){
-n[i]=prompt("enter the number");
-m=m*n[i];
-}
-console.log(m)
+
+
