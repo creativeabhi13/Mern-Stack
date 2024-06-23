@@ -37,3 +37,4 @@ let newStr1 = str2.replaceAll('pa', 'r')
 console.log(newStr1) // hell0 w0rld
 
 console.log(str2.slice(1, 3)) // ap
+
