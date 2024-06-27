@@ -331,5 +331,91 @@ console.log(sum)
 // }
 
 
-let str=787
-console.log(String.fromCharCode(str))
+// let str=787
+// console.log(String.fromCharCode(str))
+
+// Write a program that takes a non-negative integer as input and prints the sum of the squares of its digits.
+
+// n=123
+// sum=0
+// while(n>0){
+//     let digit=n%10
+//     sum+=digit*digit
+//     n=Math.floor(n/10)
+// }
+// console.log(sum)
+
+// Write a program that takes an array of integers as input and prints the second biggest number in the array. If the array contains fewer than two unique elements, print “Not enough unique elements.”
+
+let arr=[10,20,30,40,50]
+let max1=arr[0]
+let max2=-Infinity
+for(let i=1;i<arr.length;i++){
+    if(arr[i]>max1){
+        max2=max1
+
+        max1=arr[i]
+    }
+    else if(arr[i]>max2 && arr[i]!=max1){
+        max2=arr[i]
+    }
+}
+if(max2==-Infinity){
+    console.log('Not enough unique elements.')
+}
+else{
+    console.log(max2)
+}
+
+// Write a program that takes an integer n as input and prints the sum of all non-prime numbers between 1 and n (inclusive).
+
+// let n=10
+// let sum=0
+// for(let i=2;i<=n;i++){
+//     let flag=true    
+//     for(let j=2;j<=Math.sqrt(i);j++){
+//         if(i%j==0){
+//             flag=false
+
+//             break
+//         }
+//     }
+//     if(!flag){
+//         sum+=i
+//     }
+// }
+// console.log(sum)
+
+// Write a program that takes an integer n as input and prints the sum of all prime numbers between 1 and n (inclusive).
+
+// n=20
+// sum=0
+
+// for(let i=2;i<=n;i++){
+//     let flag=true
+//     for(let j=2;j<=Math.sqrt(i);j++){
+//         if(i%j==0){
+//             flag=false
+//             break
+
+//         }
+//     }
+//     if(!flag){
+//         sum+=i
+//     }
+// }
+// console.log(sum)
+
+// Write a program that takes an integer n as input and prints the sum of the series S = 1 - 2 + 3 - 4 + \ldots \pm n for n terms.
+
+n=10
+sum=0
+for(let i=1;i<=n;i++){
+    if(i%2==0){
+        sum-=i
+    }
+    else{
+        sum+=i
+    }
+}
+console.log(sum)

@@ -111,21 +111,32 @@
 
 // Approach 1
 
+// let str='hello'
+// let upperCase=true
+// let lowerCase=true
+// for(let l of str){
+//     if(l===l.toUpperCase()){
+//         lowerCase=false
+//     }
+//     else{
+//         upperCase=false
+//     }
+// }
+// console.log(upperCase);
+// console.log(lowerCase);
+
+
+
+// ---------------
+// Write a program that takes a string as input and prints the sum of the ASCII values of its characters.
+
+// Approach 1
 let str='hello'
-let upperCase=true
-let lowerCase=true
+let sum=0
 for(let l of str){
-    if(l===l.toUpperCase()){
-        lowerCase=false
-    }
-    else{
-        upperCase=false
-    }
+    sum+=l.charCodeAt()
 }
-console.log(upperCase);
-console.log(lowerCase);
-
-
+console.log(sum);
 
 
 
