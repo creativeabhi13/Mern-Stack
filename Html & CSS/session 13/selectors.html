@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* selector */
+     /* tag selector, class selector, id selector, attribute selector, pseudo selector, 
+     child selector, descendant selector, adjacent sibling selector, general sibling selector */
+/* tag selector */
+    h1{
+        color: red;
+    }
+    /* class selector */
+    .hello{
+        color: green;
+    }
+    /* id selector */
+    #hello{
+        color: blue;
+    }
+
+    /* attribute selector */
+a{
+    color: brown;
+}
+/* pseudo selector */
+a:hover{
+    color: blue;
+}
+
+/* child selector */
+div > h1{
+
+    color: yellow;
+}
+
+/* descendant selector */
+div h1{
+    color: pink;
+}
+
+    </style>
+</head>
+<body>
+    <h1 id="hello" class="hello">
+        Hello
+    </h1>
+    <a href="index.html">hi</a>
+    <div>
+        <h1>World</h1>
+    </div>
+</body>
+</html>
