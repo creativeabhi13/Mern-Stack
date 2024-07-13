@@ -1,0 +1,88 @@
+<!-- there are three different ways to use layout in css:
+1. position
+2. flex
+3. grid
+flex is the most popular way to use layout in css. it is a one-dimensional layout method for laying out items in rows or columns. items flex to fill additional space and shrink to fit into smaller spaces. flex container properties: -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .flex-container{
+            display:flex;
+            /* height: 700px; */
+
+            /* vertical arrangement */
+            /* align-items: center, flex-start,flex-end,stretch */ 
+            /* align-items: stretch; */
+            /* align-items: flex-start; */
+         /* align-items: center; */
+/* align-items: flex-end; */
+
+/* horizontal arrangement */
+/* justify-content: center, flex-start,flex-end,space-between,space-around */
+/* justify-content: center; */
+/* justify-content: flex-start; */
+/* justify-content: flex-end; */
+/* justify-content: space-between; */
+/* justify-content: space-around; */
+
+/* flex-direction: row; */
+/* flex-direction: column; */
+/* flex-direction: row-reverse; */
+/* flex-direction: column-reverse; */
+
+
+/* if flex direction is column, justify-content will be vertical and align-items will be horizontal */
+/* flex-direction: column;
+align-items: center;
+justify-content: center; */
+
+/*if flex direction is row, justify-content will be horizontal and align-items will be vertical */
+
+/* flex-direction: row;
+align-items: center;
+justify-content: center; */
+
+
+        }
+        .flex-container div{
+            background-color: tomato;
+            border:2px solid black;
+            padding: 5px;
+width: 20%;
+
+        }
+    </style>
+</head>
+<body>
+     <div class="flex-container">
+<div class="item1">
+    <h1>item 1</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat dolores qui laborum exercitationem! 
+        Deserunt doloribus distinctio nihil fugit accusantium impedit, nemo sapiente corporis quis odit excepturi, 
+        provident, suscipit minus inventore? Delectus adipisci beatae, ad aut alias accusamus reprehenderit sit natus? 
+        Earum dolor asperiores qui dolorem nisi tempore culpa distinctio. Magni.</p>
+</div>
+<div class="item2">
+    <h1>item 2</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum quidem omnis cum ipsa aperiam quisquam 
+        natus aliquam perferendis, animi aspernatur quasi unde nostrum! Impedit voluptatum, necessitatibus
+         nobis voluptatem, non enim quaerat facilis est explicabo, eveniet ullam rerum nostrum repudiandae 
+         molestiae autem. Nihil deleniti eos maiores itaque dolores error, atque pariatur!</p>
+</div>
+<div class="item3">
+    <h1>item 3</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad voluptates repudiandae iure itaque 
+        corporis iusto vero, mollitia dicta consequuntur porro esse! Atque dignissimos voluptas 
+        aperiam modi! Sequi at delectus illo amet inventore magnam accusamus aliquam iure natus nulla, 
+        dolores adipisci sint officiis veniam culpa necessitatibus unde facilis eveniet saepe suscipit.</p>
+    </p>
+</div>
+    </div>
+</body>
+</html>
