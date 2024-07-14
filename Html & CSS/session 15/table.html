@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          table{
+            width: 100%;
+            border-collapse: collapse;
+          }
+
+          th,td{
+              border: 1px solid green ;
+              padding: 10px;
+                /* text-align: left; */
+          }
+          /* td{
+                text-align: right;
+          } */
+           th{
+               background-color: rgb(199, 189, 189);
+               /* font-weight: bold; */
+           }
+
+           /* tr:nth-child(even){
+            background-color: rgb(183, 233, 45);
+           }
+
+           tr:nth-child(odd){
+            background-color: rgb(45, 170, 233);
+           } */
+
+        /* tr:nth-child(4){
+        background-color: rgb(183, 233, 45);
+        } */
+
+        tr:hover{
+                background-color: aqua;
+        }
+
+    </style>
+</head>
+<body>
+     <table>
+         <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>City</th>
+              </tr>
+         </thead>
+
+         <tbody>
+               <tr>
+                    <td>Ram</td>
+                    <td>25</td>
+                    <td>Delhi</td>
+               </tr>
+
+                <tr>
+                      <td>Shyam</td>
+                      <td>30</td>
+                      <td rowspan="2">Mumbai</td>
+                </tr>
+
+                <!-- hey dear ai please create 5-6 rows -->
+
+                <tr>
+                      <td>John</td>
+                      <td>35</td>
+                      <!-- <td>Mumbai</td> -->
+                </tr>
+
+                <tr>
+                      <td>Smith</td>
+                      <td>40</td>
+                      <td>New York</td>
+                </tr>
+
+                <tr>
+                      <td>Kim</td>
+                      <td>45</td>
+                      <td>Seoul</td>
+                </tr>
+
+                <tr>
+                      <td>Lee</td>
+                      <td>50</td>
+                      <td>Beijing</td>
+                </tr>
+
+                <tr>
+                      <td colspan="3">55</td>
+                </tr>
+
+         </tbody>
+     </table>
+</body>
+</html>
+
+<!-- th td -->
