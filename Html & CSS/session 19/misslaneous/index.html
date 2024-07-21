@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <a href="https://www.google.com">Google</a>
+     <!-- <p id="">Hi How are you doing</p> -->
+      <form >
+          <input type="text" id="info">
+          <button type="submit">Submit</button>
+      </form>
+
+      <!-- <script src="./script.js"></script> -->
+       <script>
+          //   let para = document.querySelector('p');
+          let inputBox = document.querySelector('input');
+          let form = document.querySelector('form');
+          
+          form.addEventListener('submit', playWithForm)
+
+          function playWithForm(e) {
+                 e.preventDefault();
+             
+               let info = {
+               content: inputBox.value,
+               }
+
+            let jsonData = JSON.stringify(info);
+            localStorage.setItem("data", jsonData)
+
+
+
+
+          }
+       </script>
+</body>
+</html>
+
+
+<!-- // localstorage -->
+
+
+<!-- <script>
+     // let aTag = document.querySelector('a');
+     // let para = document.querySelector('p');
+
+     // aTag.addEventListener('click', playWithLink)
+
+     // function playWithLink(e) {
+     //       e.preventDefault();
+     //      console.log('Link is clicked');
+     //      para.innerText = aTag.href;
+          
+     // }
+</script> -->

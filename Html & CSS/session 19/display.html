@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Output Form</title>
+</head>
+<body>
+    <h1>Display Form</h1>
+    <div class="users"> 
+        <div class="user">
+            <h2> Name:`${users.name}` </h2>
+            <p> Email: </p>
+            <p> Password: </p>
+    </div>
+ 
+
+
+    <script>
+        let usersJson=localStorage.getItem("users");
+        let users=JSON.parse(usersJson);
+        let div=document.querySelector('.users');
+        console.log(users);
+    </script>
+</body>
+</html>

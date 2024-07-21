@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <ol>
+            <li><a href="https://www.google.com">Google</a></li>
+            <li><a href="https://www.facebook.com">Facebook</a></li>
+            <li><a href="https://www.twitter.com">Twitter</a></li>
+     </ol>
+     <h2> I am good </h2>
+     <p id="display"></p>
+
+      <!-- <script src="./script.js"></script> -->
+       <script>
+           let para = document.querySelector('p');
+           let jsonInfo = localStorage.getItem("data");
+           let info = JSON.parse(jsonInfo); // {content: "Hi How are you doing"}
+
+           para.innerText = info.content;
+       </script>
+</body>
+</html>
