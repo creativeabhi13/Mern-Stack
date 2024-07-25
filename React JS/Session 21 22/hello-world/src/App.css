@@ -1,0 +1,27 @@
+h1{
+    color: red;
+    
+}
+
+h2{
+    color: blue;
+    
+}   
+p{
+    color: green;
+}
+button{
+    color: yellow;
+    background-color: black;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    
+}
+.basic{
+    color: red;
+    background-color: yellow;
+    border: 1px solid black;
+    
+}
