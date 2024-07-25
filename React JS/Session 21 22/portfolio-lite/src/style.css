@@ -1,0 +1,29 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+.menu a{
+    color: tomato;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.aboutMe h2{
+    text-align: center;
+}
+
+.aboutMe img{
+    width: 300px;
+    margin-left: 35%;
+}
+
+.section h2{
+    text-align: center;
+}
