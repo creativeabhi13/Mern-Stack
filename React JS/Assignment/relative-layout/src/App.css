@@ -1,0 +1,25 @@
+/* PageLayout.css */
+.page-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+  }
+  
+  .page-header {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .page-content {
+    flex: 1; /* Takes up all available space between header and footer */
+    padding: 1rem;
+  }
+  
+  .page-footer {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+    text-align: center;
+  }
+  
