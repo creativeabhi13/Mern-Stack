@@ -1,26 +1,20 @@
-/* src/MarkdownEditor.css */
+.app {
+  display: flex;
+  height: 100vh;
+}
 
-.markdown-editor-container {
-    display: flex;
-    height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  .editor, .preview {
-    flex: 1;
-    margin: 0 10px;
-  }
-  
-  textarea {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-  }
-  
-  .preview {
-    border-left: 1px solid #ccc;
-    padding-left: 20px;
-    overflow-y: auto;
-  }
-  
+.editor {
+  width: 50%;
+  height: 100%;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.preview {
+  width: 50%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
