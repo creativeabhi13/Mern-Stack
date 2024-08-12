@@ -35,4 +35,21 @@ input{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(3,50px);
+    gap: 10px;
+    
+   
 
+}
+
+.grid-item{
+    background-color: wheat;
+    border: 1px solid greenyellow;
+    text-align: center ;
+    justify-content: center;
+    width: 50px;
+    height: 25px;
+
+}

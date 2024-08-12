@@ -1,0 +1,74 @@
+#div1{
+    background-image: url(https://images.pexels.com/photos/943907/pexels-photo-943907.jpeg);
+    height: 300px;
+    width: 200px;
+    margin: 20px;
+
+}
+
+#div2{
+    background-image: url(https://images.pexels.com/photos/405202/pexels-photo-405202.jpeg);
+    height: 300px;
+    width: 200px;
+    margin: 20px;
+
+}
+
+#div3{
+    background-image: url(https://images.pexels.com/photos/2454790/pexels-photo-2454790.jpeg);
+    height: 300px;
+    width: 200px;
+    margin: 20px;
+
+}
+#div4{
+    background-image: url(https://images.pexels.com/photos/797797/pexels-photo-797797.jpeg);
+    height: 300px;
+    width: 200px;
+    margin: 20px;
+
+}
+
+#div5{
+    background-image: url(https://images.pexels.com/photos/1310182/pexels-photo-1310182.jpeg);
+    height: 300px;
+    width: 200px;
+    margin: 20px;
+
+}
+
+#div6{
+    background-image: url(https://images.pexels.com/photos/2683946/pexels-photo-2683946.jpeg);
+    height: 300px;
+    width: 200px;
+    margin: 20px;
+
+}
+
+div .container {
+    border :5px solid black;
+
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected {
+    border : 5px solid rgb(0,195,55);
+
+}
+
+p{
+    text-align: center;
+}
+
+button{
+    margin:20px;
+}
+
+.selected {
+    opacity: 0.5;
+    border: 5px solid rgb(0, 195, 55);
+}

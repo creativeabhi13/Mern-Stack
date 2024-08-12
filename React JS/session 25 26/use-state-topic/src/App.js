@@ -9,11 +9,10 @@ import TicTacToe from './Components/TicTacToe'
 const App = () => {
   return (
     <div>
-        <h1>React 18 Features</h1>
+        {/* <h1>React 18 Features</h1> */}
         {/* <Lazy /> */}
-        <hr />
         {/* <Searching/> */}
-        <hr />
+      
         <TicTacToe/>
         
     </div>
