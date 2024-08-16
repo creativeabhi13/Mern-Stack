@@ -5,15 +5,15 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
-let arr = new Array(9);
-arr.fill("");
+let ticArray = new Array(9);
+ticArray.fill("");
 
 const TicTacToe = () => {
-  let [ticArray, setTicArray] = useState(arr);
+  // let [ticArray, setTicArray] = useState(arr);
   let [winMessage, setWinMessage] = useState("");
   let [isCross, setIsCross] = useState(false);
 
-  console.log(winMessage);
+  console.log(ticArray);
 
   function winLogic(){
     
@@ -39,6 +39,7 @@ const TicTacToe = () => {
         if(ticArray[i] === ticArray[i+3] && ticArray[i] === ticArray[i+6] && ticArray[i] != "")
         {
           setWinMessage(`Winner is ${ticArray[i]}`);
+          return
         }
   
       }
@@ -51,46 +52,65 @@ const TicTacToe = () => {
     if(ticArray[0] === ticArray[4] && ticArray[0] === ticArray[8] && ticArray[0] != "")
     {
       setWinMessage(`Winner is ${ticArray[0]}`);
+      return 
     }
 
     if(ticArray[2] === ticArray[4] && ticArray[2] === ticArray[6] && ticArray[2] != "")
     {
       setWinMessage(`Winner is ${ticArray[2]}`);
+      return 
     }
 
+    if(ticArray.includes("")===false)
+{
+  setWinMessage("Game is Draw");
+  return 
+}
   }
 
 
   
   function fillTicArray(index) {
+if(winMessage){
+  toast("Game is already over", { type: "success" });
+  return 
+}
+
     if (ticArray[index] != "") {
     toast("Already filled", { type: "error" });
       return;
     }
 
-    let newArr = [...ticArray];
-    newArr[index] = isCross === true ? "x": "o"
-    setTicArray(newArr);
+    // let newArr = [...ticArray];
+    ticArray[index] = isCross === true ? "x": "o"
+    // setTicArray(newArr);
     setIsCross(!isCross);
 
     winLogic();
   }
   function reset() {
-    setTicArray([]);
+    // setTicArray([]);
+    ticArray.fill("");
     setWinMessage("");
     setIsCross(true);
   }
+let winStyle ={
+  opacity: 0.5
 
+}
   // 9*9 Structure
 
   return (
     <div>
       <h1>Tic-Tac-Toe</h1>
+      {winMessage && <h3>{winMessage}</h3>} 
+      <button onClick={reset}>Reset</button>
+      {winMessage=="" && <p> its {isCross===true ?"Cross":"Circle"}</p> }
       <ToastContainer
       position="bottom-right"
       autoClose={3000}
       />
-      <div className="grid-container">
+      <div className="grid-container" style={winMessage?winStyle:{}}>
         {ticArray.map((value, index) => (
           <div
             key={index}
