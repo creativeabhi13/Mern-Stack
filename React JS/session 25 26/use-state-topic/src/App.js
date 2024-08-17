@@ -4,6 +4,7 @@ import Lazy from './Components/Lazy'
 import './Components/Searching'
 import Searching from './Components/Searching'
 import TicTacToe from './Components/TicTacToe'
+import Async from './Components/async.js'
 
 
 const App = () => {
@@ -13,7 +14,8 @@ const App = () => {
         {/* <Lazy /> */}
         {/* <Searching/> */}
       
-        <TicTacToe/>
+        {/* <TicTacToe/> */}
+        <Async/>
         
     </div>
   )
