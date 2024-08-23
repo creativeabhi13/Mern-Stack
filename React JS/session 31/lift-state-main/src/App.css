@@ -1,0 +1,15 @@
+.App{
+  background-color: rgb(71, 71, 146);
+  height: 100vh;
+}
+
+.parent{
+   background-image: url("https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+   padding-top: 50px;
+   padding-bottom: 50px;
+}
+
+.child{
+  background-color: greenyellow;
+  
+}
