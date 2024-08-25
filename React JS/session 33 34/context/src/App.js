@@ -1,13 +1,16 @@
-import React from 'react'
-import Context from './components/context';
+import React from "react";
+
+import Hey from "./Components/Hey";
+import Hello from "./Components/Hello";
 
 const App = () => {
   return (
-    <div >
-   
-     <Context/>
-    </div> 
-  )
-}
+    <div>
+      <Hello />
+      <Hey />
+      
+    </div>
+  );
+};
 
 export default App;
