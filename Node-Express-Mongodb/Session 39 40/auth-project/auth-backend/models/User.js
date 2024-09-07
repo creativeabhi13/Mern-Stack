@@ -20,10 +20,19 @@ const userSchema = new mongoose.Schema({
         min: 6,
         max: 1024
     },
-    date: {
-        type: Date,
-        default: Date.now
-    }
-});
+    tokens: [
+        {
+            token: {
+                type: String,
+                
+            }
+        }
+    ]
 
-module.exports = mongoose.model('User', userSchema);
+},
+    {
+        timestamps: true
+    });
+
+const User = mongoose.model('User', userSchema);
+module.exports =User;
