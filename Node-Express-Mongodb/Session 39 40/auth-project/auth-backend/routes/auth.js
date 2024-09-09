@@ -5,6 +5,13 @@ const { v4: uuidv4 } = require('uuid');
 
 const authRoutes = express.Router();
 
+
+function customMiddleware(req, res, next) {
+    console.log("Middleware executed");
+    next();
+}
+
+
 authRoutes.post("/signup", (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
@@ -90,15 +97,28 @@ const user = User.findOne({email:email })
 );
 
 
-
-
-authRoutes.get("/secret1",(req, res) => {
+authRoutes.get("/secret1",customMiddleware, (req, res) => {
     res.json({message: "You are authenticated 1"});
-
 });
 
 authRoutes.get("/secret2", (req, res) => {
-   
+    const tokens = req.headers.authorization.split(" ");
+    if(!tokens== null){
+        return res.status(400).json({message: "No token provided"});
+    }
+
+   User.findOne({tokens: tokens[1]})
+    .then(user => {
+         if(!user){
+              return res.status(400).json({message: "User not found"});
+         }
+         res.json({message: "You are authenticated 2", user:user}).
+            catch(err => {
+                console.log(err);
+                res.json("Error authenticating user");
+            });
+    }
+    );
        
 });
 

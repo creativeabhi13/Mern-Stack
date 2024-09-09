@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require('dotenv');
 const {connectDB} = require('./db.js');
 const routes = require('./routes/routes.js');
+const User = require('./models/user.js');
 
 dotenv.config();
 
@@ -13,8 +14,11 @@ connectDB();
 app.use(express.json());
 
 
+
+
 // define routes
 app.use('/api',routes);
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
