@@ -20,14 +20,9 @@ const userSchema = new mongoose.Schema({
         min: 6,
         max: 1024
     },
-    tokens: [
-        {
-            token: {
-                type: String,
-                
-            }
-        }
-    ]
+    token: {
+        type:String,
+    }
 
 },
     {
@@ -35,4 +30,4 @@ const userSchema = new mongoose.Schema({
     });
 
 const User = mongoose.model('User', userSchema);
-module.exports =User;
+module.exports = User;

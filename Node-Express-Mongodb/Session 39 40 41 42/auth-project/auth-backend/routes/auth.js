@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/user.js");
 const { v4: uuidv4 } = require('uuid');
+const isLoggedIn = require("../middleware/isloggedIn.js");
 
 
 const authRoutes = express.Router();
@@ -74,7 +75,7 @@ const user = User.findOne({email:email })
     if(user.password !== password){
         return res.status(400).json({message: "Invalid credentials"});
     }
-    user.tokens = user.tokens.concat({token: uuidv4()});
+    user.token = uuidv4();
     user.save()
     .then(user => {
         res.json({message: "User logged in successfully", user: user, success: true});
@@ -97,9 +98,9 @@ authRoutes.get("/secret1",(req, res) => {
 
 });
 
-authRoutes.get("/secret2", (req, res) => {
+authRoutes.get("/secret2",isLoggedIn, (req, res) => {
    
-       
+    res.json({message: "You are authenticated 2",user: req.user});
 });
 
 
