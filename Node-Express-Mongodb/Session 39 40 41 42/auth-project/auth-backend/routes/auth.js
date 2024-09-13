@@ -1,107 +1,143 @@
 const express = require("express");
 const User = require("../models/user.js");
-const { v4: uuidv4 } = require('uuid');
+const bcrypt = require("bcrypt");
+
+const { v4: uuidv4 } = require("uuid");
 const isLoggedIn = require("../middleware/isloggedIn.js");
 
+const letsMail = require("../utilities/letsMail.js");
 
 const authRoutes = express.Router();
+const saltRounds = 13;
 
-authRoutes.post("/signup", (req, res) => {
+authRoutes.post("/signup", async (req, res) => {
   const { name, email, password } = req.body;
+
+  // Check if all fields are filled
   if (!name || !email || !password) {
-    return res.status(400).json({ message: "All fields are required" });
-  }
-  if (password.length < 6) {
-    return res
-      .status(400)
-      .json({ message: "Password must be at least 6 characters long" });
+    return res.status(400).json({
+      message: "All fields are required",
+    });
   }
 
-  if (password.length > 15) {
-    return res
-      .status(400)
-      .json({ message: "Password must be at most 15 characters long" });
+  const user = await User.findOne({
+    email: email,
+  });
+  if (user) {
+    return res.status(400).json({
+      message: "User Already register with this email",
+    });
   }
 
-  if (name.length < 4) {
-    return res
-      .status(400)
-      .json({ message: "Name must be at least 6 characters long" });
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
+  if (hashedPassword == null) {
+    return res.status(400).json({
+      message: "Error hashing password",
+    });
   }
-  if (name.length > 15) {
-    return res
-      .status(400)
-      .json({ message: "Name must be at most 15 characters long" });
-  }
-
-  const newUser = new User({
+  let newUser = new User({
     name: name,
     email: email,
-    password: password,
+    password: hashedPassword,
   });
-
-  newUser
-    .save()
-    .then((user) => {
-      res.json({
-        message: "User created successfully",
-        user: user,
-        success: true,
+  try {
+    let savedUser = await newUser.save();
+    if (savedUser == null) {
+      return res.status(400).json({
+        message: "Error in Saving User",
       });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json("Error creating user");
+    } else {
+
+      letsMail({
+        name: name,
+        subject: `Welcome ${name} to Our Website Creativeabhi13`,
+        to: email,
+        text: `Welcome ${name} to our website Creativeabhi13. We are glad to have you with us.Thanks for joining us. We hope you have a great time with us. 
+        Regards, 
+        
+        Team Creativeabhi13
+              
+        
+        `,
+
     });
+      savedUser.token = uuidv4();
+      let updateUser = await savedUser.save();
+      if (updateUser == null) {
+        return res.status(400).json({
+          message: "Error saving token",
+        });
+      } else {
+        return res.json({
+          message: "User created successfully",
+          user: updateUser,
+          success: true,
+        });
+      }
+    }
+  } catch (err) {
+    console.log(err);
+    res.json({
+      message: "Error creating user",
+      err,
+    });
+  }
 });
 
+authRoutes.post("/login", async (req, res) => {
+  const { email, password } = req.body;
 
-authRoutes.post("/login", (req, res) => {
-    const { email, password } = req.body
-    if (!email || !password) {
-        return res.status(400).json({ message: "All fields are required" });
+  if (!email || !password) {
+    return res.status(400).json({
+      message: "All fields are required",
+    });
+  }
+
+  const user = await User.findOne({
+    email: email,
+  });
+  if (!user) {
+    return res.status(400).json({
+      message: "User not found",
+    });
+  }
+
+  try {
+    let foundUser = await User.findOne({ email: email });
+    const isSame = await bcrypt.compare(password, foundUser.password);
+    if (isSame) {
+      foundUser.token = uuidv4();
+      let updatedUser = await foundUser.save();
+      if (updatedUser) {
+        return res.json({
+          message: "User logged in successfully",
+          user: updatedUser,
+          success: true,
+        });
+      }
+      else {
+        return res.status(400).json({
+          message: "Error saving token",
+        });
+      }
     }
-    if(password.length < 6){
-        return res.status(400).json({message: "Password must be at least 6 characters long"});
+    else {
+      return res.status(400).json({
+        message: "Invalid credentials",
+      });
     }
-    if(password.length > 15){
-        return res.status(400).json({message: "Password must be at most 15 characters long"});
-    }
-const user = User.findOne({email:email })
-.then(user => {
-    if(!user){
-        return res.status(400).json({message: "User does not exist"});
-    }
-    if(user.password !== password){
-        return res.status(400).json({message: "Invalid credentials"});
-    }
-    user.token = uuidv4();
-    user.save()
-    .then(user => {
-        res.json({message: "User logged in successfully", user: user, success: true});
-    }
-    ).catch(err => {
-        console.log(err);
-        res.json("Error logging in user");
+  }
+
+  catch (err) {
+    console.log(err);
+    res.json({
+      message: "Error creating user",
+      err,
     });
 
-}
-)
-}
-);
-
-
-
-
-authRoutes.get("/secret1",(req, res) => {
-    res.json({message: "You are authenticated 1"});
-
+  }
 });
 
-authRoutes.get("/secret2",isLoggedIn, (req, res) => {
-   
-    res.json({message: "You are authenticated 2",user: req.user});
-});
 
 
 module.exports = authRoutes;
