@@ -52,14 +52,7 @@ authRoutes.post("/signup", async (req, res) => {
         name: name,
         subject: `Welcome ${name} to Our Website Creativeabhi13`,
         to: email,
-        text: `Welcome ${name} to our website Creativeabhi13. We are glad to have you with us.Thanks for joining us. We hope you have a great time with us. 
-        Regards, 
-        
-        Team Creativeabhi13
-              
-        
-        `,
-
+       link:"https://www.google.com/",
     });
       savedUser.token = uuidv4();
       let updateUser = await savedUser.save();
