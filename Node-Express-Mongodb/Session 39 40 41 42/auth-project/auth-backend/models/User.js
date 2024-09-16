@@ -22,7 +22,14 @@ const userSchema = new mongoose.Schema({
     },
     token: {
         type:String,
-    }
+    },
+    emailToken: {
+        type: String,
+    },
+    emailVerified: {
+        type: Boolean,
+        default: false
+    },
 
 },
     {
