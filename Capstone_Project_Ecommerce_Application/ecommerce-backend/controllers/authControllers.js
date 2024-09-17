@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import customResponse from "../utilities/response.js";
 import sendMail from "../utilities/sendMail.js";
 import jwt from "jsonwebtoken";
+import { v4 as uuidv4 } from "uuid";
 import generateToken from "../utilities/generateToken.js";
 dotenv.config();
 
@@ -42,7 +43,7 @@ export const signup = async (req, res) => {
     let savedUser = await newUser.save();
     if (savedUser != null) {
       // create email token
-      let emailToken = generateToken(savedUser._id);
+      let emailToken = uuidv4();
       savedUser.emailToken = emailToken;
       savedUser.email_sent_at = new Date();
       const updatedUser = await savedUser.save();
@@ -73,42 +74,49 @@ export const signup = async (req, res) => {
   }
 };
 
-// verify email token and update emailVerified field  & create actual token
+// verify email token and update emailVerified field  & create actual token for user it is a get request
 
 export const verifyEmail = async (req, res) => {
-const emailToken = req.params.body;
-
-  if (emailToken == null) {
-    return customResponse(res, "Invalid token");
-  }
-
-  try {
-    const decoded = jwt.verify(emailToken, JWT_TOKEN);
-    const user = await User.findById(decoded.id);
-    if (!user) {
+    // Extract token from route parameters
+    const emailToken = req.params.token;
+  
+    if (!emailToken) {
       return customResponse(res, "Invalid token");
-    } else {
+    }
+  
+    try {
+      // Find the user by emailToken
+      const user = await User.findOne({ emailToken: emailToken });
+  
+      if (!user) {
+        return customResponse(res, "Invalid token");
+      }
+  
+      // Generate a new token for the user
       let token = generateToken(user._id);
-
-      user.emailToken = "";
-      user.token = token;
+  
+      // Update user fields
+      user.emailToken = ""; // Clear the email token
+      user.token = token;   // Set the new token
       user.emailVerified = true;
+  
+      // Save the updated user
       const updatedUser = await user.save();
-
-      if (updatedUser != null) {
+  
+      if (updatedUser) {
         return customResponse(
           res,
           "Email verified successfully",
-        user,
+          updatedUser,
           200,
           true
         );
       } else {
         return customResponse(res, "Email verification failed");
       }
+    } catch (err) {
+      return customResponse(res, err.message, null, 500, false);
     }
-  } catch (err) {
-    return customResponse(res, err.message, null, 500, false);
-  }
-};
+  };
+  
 
