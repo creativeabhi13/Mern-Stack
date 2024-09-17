@@ -14,6 +14,11 @@ const userSchema = new mongoose.Schema({
         min: 6,
         max: 255
     },
+    phone:{
+        type:String,
+        required:true,
+        unique:true,
+    },
     password: {
         type: String,
         required: true,
@@ -27,6 +32,19 @@ const userSchema = new mongoose.Schema({
         type: String,
     },
     emailVerified: {
+        type: Boolean,
+        default: false
+    },
+    email_sent_at:{
+        type: Date
+    },
+    otp: {
+        type: String,
+    },
+    otp_sent_at: {
+        type: Date
+    },
+    otp_verified: {
         type: Boolean,
         default: false
     },
