@@ -40,16 +40,16 @@ const userSchema = new mongoose.Schema(
     email_sent_at: {
       type: Date,
     },
-    otp: {
-      type: String,
-    },
-    otp_sent_at: {
-      type: Date,
-    },
-    otp_verified: {
-      type: Boolean,
-      default: false,
-    },
+    // otp: {
+    //   type: String,
+    // },
+    // otp_sent_at: {
+    //   type: Date,
+    // },
+    // otp_verified: {
+    //   type: Boolean,
+    //   default: false,
+    // },
   },
   {
     timestamps: true,
