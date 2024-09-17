@@ -1,3 +1,4 @@
+const e = require('express');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -25,6 +26,7 @@ const userSchema = new mongoose.Schema({
         min: 6,
         max: 1024
     },
+ 
     token: {
         type:String,
     },
