@@ -10,7 +10,7 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const sendMail = async (options) => {
+const sendMail1 = async (options) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     host: process.env.MAIL_HOST,
@@ -20,12 +20,11 @@ const sendMail = async (options) => {
     },
   });
 
-  const templatePath = path.join(__dirname, `../templates/verifyEmail.html`);
+  const templatePath = path.join(__dirname, `../templates/verifiedEmail.html`);
 
   let htmlString = fs.readFileSync(templatePath, "utf8");
   htmlString = htmlString.replace(/{{name}}/g, options.name);
   htmlString = htmlString.replace(/{{email}}/g, options.email);
-  htmlString = htmlString.replace(/{{role}}/g, options.role);
   htmlString = htmlString.replace(/{{store_name}}/g, options.store_name);
   htmlString = htmlString.replace(/{{link}}/g, options.link);
 
@@ -44,4 +43,4 @@ const sendMail = async (options) => {
   }
 };
 
-export default sendMail;
+export default sendMail1;
