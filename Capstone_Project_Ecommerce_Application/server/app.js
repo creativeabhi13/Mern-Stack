@@ -1,35 +1,39 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import connectDB from './utilities/db.js';
-import routes from './routes/routes.js';
-import cookieParser from 'cookie-parser';
+import express from "express";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+import cors from "cors";
+import connectDB from "./utilities/db.js";
+import routes from "./routes/routes.js";
 
 dotenv.config();
-const app = express();
-const PORT = process.env.PORT || 5002;
 
-// Middleware
-app.use(cors({
-    origin: "http://localhost:5173/",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-   allowedHeaders: ["Content-Type", "Authorization","Cache-Control","Expires","Pragma"],
-   credentials: true
-}));
+//create a database connection -> u can also
+//create a separate file for this and then import/use that file here
 
-app.use(bodyParser.json());
-app.use(express.json());
-app.use(cookieParser());
 
-// Database connection
 connectDB();
 
-// Routes
+const app = express();
+const PORT = process.env.PORT || 5001;
 
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Cache-Control",
+      "Expires",
+      "Pragma",
+    ],
+    credentials: true,
+  })
+);
+
+app.use(cookieParser());
+app.use(express.json());
 app.use("/api", routes);
 
-// Server setup
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+
+app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
