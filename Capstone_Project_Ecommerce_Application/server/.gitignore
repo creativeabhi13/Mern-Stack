@@ -26,40 +26,52 @@ out/
 .DS_Store
 Thumbs.db
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+# IDE specific files
+.vscode/
 .idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
 
-# Temporary files
-tmp/
-temp/
-*.tmp
-*.temp
+# Optional npm cache directory
+.npm
 
-# Coverage directory used by testing tools
-coverage/
+# Optional eslint cache
+.eslintcache
 
-# TypeScript
-*.tsbuildinfo
+# Optional REPL history
+.node_repl_history
 
-# Logs from various tools
-*.log
+# Output of 'npm pack'
+*.tgz
 
-# MacOS files
-.DS_Store
+# Yarn Integrity file
+.yarn-integrity
 
-# Windows files
-Thumbs.db
-ehthumbs.db
+# dotenv environment variables file
+.env.test
 
-# Linux files
-*~
+# Parcel-bundler cache (https://parceljs.org/)
+.cache
 
-# Other
-*.local
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+
+# Gatsby files
+.cache/
+public
+
+# Vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
