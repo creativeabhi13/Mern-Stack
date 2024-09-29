@@ -98,7 +98,7 @@ export const createOrder = async (req, res) => {
           order_date: newlyCreatedOrder.orderDate,
           order_total: newlyCreatedOrder.totalAmount,
           store_name: "Laptop Wala",
-          link: "https://localhost:5173/shop",
+          link: "https://localhost:5173/shop/home",
           userId: newlyCreatedOrder.userId,
           cartId: newlyCreatedOrder.cartId,
           cartItems: newlyCreatedOrder.cartItems,
