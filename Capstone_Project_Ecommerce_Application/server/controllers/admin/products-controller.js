@@ -1,6 +1,17 @@
-import Product from "../../models/product.js";
+import Product from "../../models/Product.js";
 import { imageUploadUtil } from "../../helpers/cloudinary.js";
 
+// Slug generation utility function
+const generateSlug = (title) => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9 -]/g, '') // Remove invalid characters
+    .replace(/ -/g, '-') // Replace spaces with hyphens
+    .replace(/--+/g, '-') // Replace multiple hyphens with a single one
+    .trim(); // Remove leading/trailing spaces
+};
+
+// Handle image upload
 export const handleImageUpload = async (req, res) => {
   try {
     const b64 = Buffer.from(req.file.buffer).toString("base64");
@@ -15,12 +26,12 @@ export const handleImageUpload = async (req, res) => {
     console.log(error);
     res.json({
       success: false,
-      message: "Error occured",
+      message: "Error occurred during image upload",
     });
   }
 };
 
-//add a new product
+// Add a new product
 export const addProduct = async (req, res) => {
   try {
     const {
@@ -35,36 +46,48 @@ export const addProduct = async (req, res) => {
       averageReview,
     } = req.body;
 
-    console.log(averageReview, "averageReview");
+    // Generate slug from title
+    const slug = generateSlug(title);
 
+    // Check for duplicate slug
+    const existingProduct = await Product.findOne({ slug });
+    if (existingProduct) {
+      return res.status(400).json({
+        success: false,
+        message: "A product with this slug already exists.",
+      });
+    }
+
+    // Create a new product instance
     const newlyCreatedProduct = new Product({
       image,
       title,
+      slug, // Include slug in the product data
       description,
       category,
       brand,
       price,
-      salePrice,
+      salePrice: salePrice || null,
       totalStock,
-      averageReview,
+      averageReview: averageReview || 0,
     });
 
     await newlyCreatedProduct.save();
+
     res.status(201).json({
       success: true,
       data: newlyCreatedProduct,
     });
   } catch (e) {
-    console.log(e);
+    console.log(e); // Log the error for debugging
     res.status(500).json({
       success: false,
-      message: "Error occured",
+      message: "Error occurred while adding the product",
     });
   }
 };
 
-//fetch all products
-
+// Fetch all products
 export const fetchAllProducts = async (req, res) => {
   try {
     const listOfProducts = await Product.find({});
@@ -76,12 +99,12 @@ export const fetchAllProducts = async (req, res) => {
     console.log(e);
     res.status(500).json({
       success: false,
-      message: "Error occured",
+      message: "Error occurred while fetching products",
     });
   }
 };
 
-//edit a product
+// Edit a product
 export const editProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -97,20 +120,32 @@ export const editProduct = async (req, res) => {
       averageReview,
     } = req.body;
 
-    let findProduct = await Product.findById(id);
+    const findProduct = await Product.findById(id);
     if (!findProduct)
       return res.status(404).json({
         success: false,
         message: "Product not found",
       });
 
+    // Generate new slug if title changes
+    if (title && title !== findProduct.title) {
+      const slug = generateSlug(title);
+      const existingProduct = await Product.findOne({ slug });
+      if (existingProduct) {
+        return res.status(400).json({
+          success: false,
+          message: "A product with this slug already exists.",
+        });
+      }
+      findProduct.slug = slug; // Update the slug
+    }
+
     findProduct.title = title || findProduct.title;
     findProduct.description = description || findProduct.description;
     findProduct.category = category || findProduct.category;
     findProduct.brand = brand || findProduct.brand;
     findProduct.price = price === "" ? 0 : price || findProduct.price;
-    findProduct.salePrice =
-      salePrice === "" ? 0 : salePrice || findProduct.salePrice;
+    findProduct.salePrice = salePrice === "" ? 0 : salePrice || findProduct.salePrice;
     findProduct.totalStock = totalStock || findProduct.totalStock;
     findProduct.image = image || findProduct.image;
     findProduct.averageReview = averageReview || findProduct.averageReview;
@@ -124,12 +159,12 @@ export const editProduct = async (req, res) => {
     console.log(e);
     res.status(500).json({
       success: false,
-      message: "Error occured",
+      message: "Error occurred while editing the product",
     });
   }
 };
 
-//delete a product
+// Delete a product
 export const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -143,13 +178,13 @@ export const deleteProduct = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: "Product delete successfully",
+      message: "Product deleted successfully",
     });
   } catch (e) {
     console.log(e);
     res.status(500).json({
       success: false,
-      message: "Error occured",
+      message: "Error occurred while deleting the product",
     });
   }
 };

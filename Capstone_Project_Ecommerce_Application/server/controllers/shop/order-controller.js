@@ -4,6 +4,7 @@ import Order from "../../models/order.js";
 import Cart from "../../models/Cart.js";
 import Product from "../../models/product.js";
 import paypal from "../../helpers/paypal.js";
+import orderEmail from "../../utilities/orderEmail.js";
 
 
 
@@ -84,7 +85,31 @@ export const createOrder = async (req, res) => {
           (link) => link.rel === "approval_url"
         ).href;
 
-        res.status(201).json({
+        res.status(201).json(
+          orderEmail({
+            to:email,
+            subject: "Order Confirmation",
+            name: userName,
+            email,
+            order_number: newlyCreatedOrder._id,
+            order_date: newlyCreatedOrder.orderDate,
+            order_total: newlyCreatedOrder.totalAmount,
+            store_name: "Laptop Wala",
+            link: "https://localhost:5173/shop",
+            userId: newlyCreatedOrder.userId,
+            cartId: newlyCreatedOrder.cartId,
+            cartItems: newlyCreatedOrder.cartItems,
+            addressInfo: newlyCreatedOrder.addressInfo,
+            orderStatus: newlyCreatedOrder.orderStatus,
+            paymentMethod: newlyCreatedOrder.paymentMethod,
+            paymentStatus: newlyCreatedOrder.paymentStatus,
+            orderUpdateDate: newlyCreatedOrder.orderUpdateDate,
+            paymentId: newlyCreatedOrder.paymentId,
+            payerId: newlyCreatedOrder.payerId,
+          }),
+          
+          {
+          
           success: true,
           approvalURL,
           orderId: newlyCreatedOrder._id,

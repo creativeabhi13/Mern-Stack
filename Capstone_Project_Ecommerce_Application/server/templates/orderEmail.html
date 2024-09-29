@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - {{store_name}}</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e4e8;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .content {
+            padding: 25px 30px;
+        }
+        .content p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .content table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        .content table, .content th, .content td {
+            border: 1px solid #ddd;
+        }
+        .content th, .content td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .content th {
+            background-color: #f4f6f9;
+            font-weight: bold;
+        }
+        .content td {
+            color: #333;
+        }
+
+        .button {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .button a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .button a:hover {
+            background-color: #388e3c;
+        }
+        .footer {
+            background-color: #f4f6f9;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            border-top: 1px solid #e0e4e8;
+        }
+        .footer p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 650px) {
+            .header h1 {
+                font-size: 26px;
+            }
+            .content p, .content table, .content th, .content td {
+                font-size: 14px;
+            }
+            .button a {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Order Confirmed!</h1>
+            <p>Thank you for shopping with {{store_name}}</p>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content">
+            <p>Hello <strong>{{name}}</strong>,</p>
+            <p>We’ve received your order and it’s now being processed. Your order details are below:</p>
+            
+            <!-- Order Information Table -->
+            <table>
+                <tr>
+                    <th>Order ID</th>
+                    <td>{{orderId}}</td>
+                </tr>
+                <tr>
+                    <th>User ID</th>
+                    <td>{{userId}}</td>
+                </tr>
+                <tr>
+                    <th>Cart ID</th>
+                    <td>{{cartId}}</td>
+                </tr>
+                <tr>
+                    <th>Cart Items</th>
+                    <td>{{cartItems}}</td>
+                </tr>
+                <tr>
+                    <th>Address Information</th>
+                    <td>{{addressInfo}}</td>
+                </tr>
+                <tr>
+                    <th>Order Status</th>
+                    <td>{{orderStatus}}</td>
+                </tr>
+                <tr>
+                    <th>Payment Method</th>
+                    <td>{{paymentMethod}}</td>
+                </tr>
+                <tr>
+                    <th>Payment Status</th>
+                    <td>{{paymentStatus}}</td>
+                </tr>
+                <tr>
+                    <th>Total Amount</th>
+                    <td>{{totalAmount}}</td>
+                </tr>
+                <tr>
+                    <th>Order Date</th>
+                    <td>{{orderDate}}</td>
+                </tr>
+                <tr>
+                    <th>Order Update Date</th>
+                    <td>{{orderUpdateDate}}</td>
+                </tr>
+                <tr>
+                    <th>Payment ID</th>
+                    <td>{{paymentId}}</td>
+                </tr>
+                <tr>
+                    <th>Payer ID</th>
+                    <td>{{payerId}}</td>
+                </tr>
+            </table>
+
+            <p>We'll notify you once your items are shipped. You can track your order status using the button below:</p>
+
+            <div class="button">
+                <a href="{{tracking_link}}">Track Your Order</a>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <p>If you have any questions about your order, feel free to reply to this email or contact our support team.</p>
+            <p>Best regards, <br> The <strong>{{store_name}}</strong> Team</p>
+        </div>
+    </div>
+
+</body>
+</html>

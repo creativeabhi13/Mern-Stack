@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../../models/user.js";
+import sendMail from "../../utilities/sendMail.js";
 
 //register
 export const registerUser = async (req, res) => {
@@ -22,7 +23,18 @@ export const registerUser = async (req, res) => {
     });
 
     await newUser.save();
-    res.status(200).json({
+    res.status(200).json(
+      sendMail({
+      to: email,
+      subject: "Welcome to Laptop Wala",
+      name: userName,
+      email,
+      role: newUser.role,
+      store_name: "Laptop Wala",
+      link: "https://localhost:5173/shop",
+      }),
+      
+      {
       success: true,
       message: "Registration successful",
     });

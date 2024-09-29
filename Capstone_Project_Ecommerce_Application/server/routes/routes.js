@@ -19,8 +19,8 @@ const routes = express.Router();
 routes.use("/auth", authRoutes);
 
 // Admin routes
-routes.use("admin/products", adminProductsRoutes);
-routes.use("admin/orders", adminOrderRoutes);
+routes.use("/admin/products", adminProductsRoutes);
+routes.use("/admin/orders", adminOrderRoutes);
 
 // Shop routes
 routes.use("/shop/products", shopProductsRoutes);

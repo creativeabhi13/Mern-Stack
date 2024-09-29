@@ -1,10 +1,13 @@
 import cloudinary from "cloudinary";
 import multer from "multer";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 cloudinary.config({
-  cloud_name: "your_cloud_name",
-  api_key: "your_api_key",
-  api_secret: "your_api_secret",
+  cloud_name: process.env.cloud_name,
+  api_key: process.env.api_key,
+  api_secret: process.env.api_secret,
 });
 
 // Configure multer to store files in memory

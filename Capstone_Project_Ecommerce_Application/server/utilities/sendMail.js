@@ -20,7 +20,7 @@ const sendMail = async (options) => {
     },
   });
 
-  const templatePath = path.join(__dirname, `../templates/verifyEmail.html`);
+  const templatePath = path.join(__dirname, `../templates/welcomeEmail.html`);
 
   let htmlString = fs.readFileSync(templatePath, "utf8");
   htmlString = htmlString.replace(/{{name}}/g, options.name);

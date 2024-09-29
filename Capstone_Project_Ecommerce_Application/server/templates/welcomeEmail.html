@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to {{store_name}}</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e4e8;
+        }
+        .header {
+            background-color: #FF6F61;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .header p {
+            font-size: 16px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        .content {
+            padding: 25px 30px;
+        }
+        .content p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+        }
+        .content ul {
+            padding: 0;
+            list-style: none;
+        }
+        .content ul li {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            color: #FF6F61;
+            font-weight: 500;
+        }
+        .button {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .button a {
+            background-color: #FF6F61;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .button a:hover {
+            background-color: #d05550;
+        }
+        .footer {
+            background-color: #f4f6f9;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            border-top: 1px solid #e0e4e8;
+        }
+        .footer p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 600px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            .content p, .content ul li {
+                font-size: 14px;
+            }
+            .button a {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Welcome to {{store_name}}!</h1>
+            <p>We’re thrilled to have you here</p>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content">
+            <p>Hello <strong>{{name}}</strong>,</p>
+            <p>Welcome to <strong>{{store_name}}</strong>! Your account has been successfully created with the following details:</p>
+            <ul>
+                <li><strong>Email:</strong> {{email}}</li>
+                <li><strong>Role:</strong> {{role}}</li>
+            </ul>
+            <p>Now you can start shopping with us and enjoy our wide range of products.</p>
+            <p>Thank you for choosing <strong>{{store_name}}</strong>!</p>
+            
+        
+            <div class="button">
+                <a href="{{link}}"> 
+                    Shop Now 
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <p>If you have any questions or need assistance, feel free to reply to this email or contact our support team.</p>
+            <p>Best regards, <br> The <strong>{{store_name}}</strong> Team</p>
+        </div>
+    </div>
+
+</body>
+</html>
