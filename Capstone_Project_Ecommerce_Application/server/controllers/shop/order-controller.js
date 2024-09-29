@@ -5,14 +5,16 @@ import Cart from "../../models/Cart.js";
 import Product from "../../models/Product.js";
 import paypal from "../../helpers/paypal.js";
 import orderEmail from "../../utilities/orderEmail.js";
+import User from "../../models/user.js";
 
 
 
 export const createOrder = async (req, res) => {
   try {
+
+
     const {
-      email,
-      userName,
+     
       userId,
       cartItems,
       addressInfo,
@@ -26,6 +28,8 @@ export const createOrder = async (req, res) => {
       payerId,
       cartId,
     } = req.body;
+
+    
 
     const create_payment_json = {
       intent: "sale",
@@ -65,6 +69,8 @@ export const createOrder = async (req, res) => {
           message: "Error while creating PayPal payment",
         });
       } else {
+
+        
         // Save the newly created order in the database
         const newlyCreatedOrder = new Order({
           userId,
@@ -88,27 +94,32 @@ export const createOrder = async (req, res) => {
           (link) => link.rel === "approval_url"
         ).href;
 
+        const  user  = await User.findById(userId);
+        const email = user.email;
+        const userName = user.userName;
+        console.log("Email to send:", email,userName);
+
+
         // Send order confirmation email (this should be separate from the response)
         orderEmail({
           to: email,
           subject: "Order Confirmation",
           name: userName,
-          email,
-          order_number: newlyCreatedOrder._id,
-          order_date: newlyCreatedOrder.orderDate,
-          order_total: newlyCreatedOrder.totalAmount,
+          order_number: userId,
+          order_date: orderDate,
+          order_total: totalAmount,
           store_name: "Laptop Wala",
           link: "https://localhost:5173/shop/home",
-          userId: newlyCreatedOrder.userId,
-          cartId: newlyCreatedOrder.cartId,
-          cartItems: newlyCreatedOrder.cartItems,
-          addressInfo: newlyCreatedOrder.addressInfo,
-          orderStatus: newlyCreatedOrder.orderStatus,
-          paymentMethod: newlyCreatedOrder.paymentMethod,
-          paymentStatus: newlyCreatedOrder.paymentStatus,
-          orderUpdateDate: newlyCreatedOrder.orderUpdateDate,
-          paymentId: newlyCreatedOrder.paymentId,
-          payerId: newlyCreatedOrder.payerId,
+          userId: userId,
+          cartId: cartId,
+          cartItems: cartItems,
+          addressInfo: addressInfo,
+          orderStatus: orderStatus,
+          paymentMethod: paymentMethod,
+          paymentStatus: paymentStatus,
+          orderUpdateDate: orderUpdateDate,
+          paymentId: paymentId,
+          payerId: payerId,
         });
 
         // Respond to the client
