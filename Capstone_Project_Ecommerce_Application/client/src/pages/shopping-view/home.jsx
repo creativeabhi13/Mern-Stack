@@ -2,18 +2,26 @@ import { Button } from "@/components/ui/button";
 
 import {
   Airplay,
-  BabyIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   CloudLightning,
-  Heater,
-  Images,
-  Shirt,
-  ShirtIcon,
-  ShoppingBasket,
-  UmbrellaIcon,
-  WashingMachine,
-  WatchIcon,
+  Laptop2Icon,
+  LaptopMinimal,
+  LaptopMinimalIcon,
+  LayoutPanelTop,
+  LucideBookTemplate,
+  LucideBriefcaseBusiness,
+  LucideGamepad2,
+  LucideMonitorX,
+  LucideWorkflow,
+  MonitorCheck,
+  MonitorDotIcon,
+  MonitorPauseIcon,
+  MonitorPlay,
+  MonitorSmartphone,
+  MonitorSpeakerIcon,
+  Presentation,
+ 
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
@@ -33,27 +41,27 @@ import { LaptopIcon } from "lucide-react"; // Replace with actual icon imports
 import { brandOptionsMap, categoryOptionsMap } from "@/config";
 
 const categoriesWithIcon = [
-  { id: "gaming", label: categoryOptionsMap.gaming, icon: LaptopIcon },
-  { id: "ultrabook", label: categoryOptionsMap.ultrabook, icon: LaptopIcon },
-  { id: "business", label: categoryOptionsMap.business, icon: LaptopIcon },
-  { id: "2in1", label: categoryOptionsMap["2in1"], icon: LaptopIcon },
-  { id: "budget", label: categoryOptionsMap.budget, icon: LaptopIcon },
-  { id: "student", label: categoryOptionsMap.student, icon: LaptopIcon },
-  { id: "workstation", label: categoryOptionsMap.workstation, icon: LaptopIcon },
-  { id: "chromebook", label: categoryOptionsMap.chromebook, icon: LaptopIcon },
+  { id: "gaming", label: categoryOptionsMap.gaming, icon: LucideGamepad2 },
+  { id: "ultrabook", label: categoryOptionsMap.ultrabook, icon: LucideBookTemplate },
+  { id: "business", label: categoryOptionsMap.business, icon: LucideBriefcaseBusiness },
+  { id: "2in1", label: categoryOptionsMap["2in1"], icon: LucideMonitorX },
+  { id: "budget", label: categoryOptionsMap.budget, icon: LayoutPanelTop},
+  { id: "student", label: categoryOptionsMap.student, icon: LaptopMinimal },
+  { id: "workstation", label: categoryOptionsMap.workstation, icon: LucideWorkflow },
+  { id: "chromebook", label: categoryOptionsMap.chromebook, icon: MonitorSpeakerIcon},
 ];
 
 const brandsWithIcon = [
   { id: "apple", label: brandOptionsMap.apple, icon: LaptopIcon }, 
-  { id: "dell", label: brandOptionsMap.dell, icon: LaptopIcon },
-  { id: "hp", label: brandOptionsMap.hp, icon: LaptopIcon },
-  { id: "lenovo", label: brandOptionsMap.lenovo, icon: LaptopIcon },
-  { id: "asus", label: brandOptionsMap.asus, icon: LaptopIcon },
-  { id: "acer", label: brandOptionsMap.acer, icon: LaptopIcon },
-  { id: "microsoft", label: brandOptionsMap.microsoft, icon: LaptopIcon },
-  { id: "msi", label: brandOptionsMap.msi, icon: LaptopIcon },
-  { id: "razer", label: brandOptionsMap.razer, icon: LaptopIcon },
-  { id: "samsung", label: brandOptionsMap.samsung, icon: LaptopIcon },
+  { id: "dell", label: brandOptionsMap.dell, icon: Laptop2Icon },
+  { id: "hp", label: brandOptionsMap.hp, icon: MonitorDotIcon},
+  { id: "lenovo", label: brandOptionsMap.lenovo, icon: MonitorSmartphone},
+  { id: "asus", label: brandOptionsMap.asus, icon: LaptopMinimalIcon },
+  { id: "acer", label: brandOptionsMap.acer, icon: MonitorCheck },
+  { id: "microsoft", label: brandOptionsMap.microsoft, icon: Airplay },
+  { id: "msi", label: brandOptionsMap.msi, icon: CloudLightning },
+  { id: "razer", label: brandOptionsMap.razer, icon:MonitorPlay },
+  { id: "samsung", label: brandOptionsMap.samsung, icon:MonitorPauseIcon  },
 ];
 
 function ShoppingHome() {
