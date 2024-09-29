@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
-import bannerOne from "../../assets/banner-1.webp";
-import bannerTwo from "../../assets/banner-2.webp";
-import bannerThree from "../../assets/banner-3.webp";
+
 import {
   Airplay,
   BabyIcon,
@@ -31,22 +29,33 @@ import { useToast } from "@/components/ui/use-toast";
 import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import { getFeatureImages } from "@/store/common-slice";
 
+import { LaptopIcon } from "lucide-react"; // Replace with actual icon imports
+import { brandOptionsMap, categoryOptionsMap } from "@/config";
+
 const categoriesWithIcon = [
-  { id: "men", label: "Men", icon: ShirtIcon },
-  { id: "women", label: "Women", icon: CloudLightning },
-  { id: "kids", label: "Kids", icon: BabyIcon },
-  { id: "accessories", label: "Accessories", icon: WatchIcon },
-  { id: "footwear", label: "Footwear", icon: UmbrellaIcon },
+  { id: "gaming", label: categoryOptionsMap.gaming, icon: LaptopIcon },
+  { id: "ultrabook", label: categoryOptionsMap.ultrabook, icon: LaptopIcon },
+  { id: "business", label: categoryOptionsMap.business, icon: LaptopIcon },
+  { id: "2in1", label: categoryOptionsMap["2in1"], icon: LaptopIcon },
+  { id: "budget", label: categoryOptionsMap.budget, icon: LaptopIcon },
+  { id: "student", label: categoryOptionsMap.student, icon: LaptopIcon },
+  { id: "workstation", label: categoryOptionsMap.workstation, icon: LaptopIcon },
+  { id: "chromebook", label: categoryOptionsMap.chromebook, icon: LaptopIcon },
 ];
 
 const brandsWithIcon = [
-  { id: "nike", label: "Nike", icon: Shirt },
-  { id: "adidas", label: "Adidas", icon: WashingMachine },
-  { id: "puma", label: "Puma", icon: ShoppingBasket },
-  { id: "levi", label: "Levi's", icon: Airplay },
-  { id: "zara", label: "Zara", icon: Images },
-  { id: "h&m", label: "H&M", icon: Heater },
+  { id: "apple", label: brandOptionsMap.apple, icon: LaptopIcon }, 
+  { id: "dell", label: brandOptionsMap.dell, icon: LaptopIcon },
+  { id: "hp", label: brandOptionsMap.hp, icon: LaptopIcon },
+  { id: "lenovo", label: brandOptionsMap.lenovo, icon: LaptopIcon },
+  { id: "asus", label: brandOptionsMap.asus, icon: LaptopIcon },
+  { id: "acer", label: brandOptionsMap.acer, icon: LaptopIcon },
+  { id: "microsoft", label: brandOptionsMap.microsoft, icon: LaptopIcon },
+  { id: "msi", label: brandOptionsMap.msi, icon: LaptopIcon },
+  { id: "razer", label: brandOptionsMap.razer, icon: LaptopIcon },
+  { id: "samsung", label: brandOptionsMap.samsung, icon: LaptopIcon },
 ];
+
 function ShoppingHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const { productList, productDetails } = useSelector(

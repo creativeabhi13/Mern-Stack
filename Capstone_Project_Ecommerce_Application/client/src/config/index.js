@@ -120,28 +120,43 @@ export const shoppingViewHeaderMenuItems = [
     path: "/shop/listing",
   },
   {
-    id: "men",
-    label: "Men",
+    id: "gaming",
+    label: "Gaming",
     path: "/shop/listing",
   },
   {
-    id: "women",
-    label: "Women",
+    id: "ultrabook",
+    label: "Ultrabook",
     path: "/shop/listing",
   },
   {
-    id: "kids",
-    label: "Kids",
+    id: "business",
+    label: "Business",
     path: "/shop/listing",
   },
   {
-    id: "footwear",
-    label: "Footwear",
+    id: "2in1",
+    label: "2-in-1",
     path: "/shop/listing",
   },
   {
-    id: "accessories",
-    label: "Accessories",
+    id: "budget",
+    label: "Budget",
+    path: "/shop/listing",
+  },
+  {
+    id: "student",
+    label: "Student",
+    path: "/shop/listing",
+  },
+  {
+    id: "workstation",
+    label: "Workstation",
+    path: "/shop/listing",
+  },
+  {
+    id: "chromebook",
+    label: "Chromebook",
     path: "/shop/listing",
   },
   {
@@ -175,7 +190,6 @@ export const brandOptionsMap = {
   samsung: "Samsung",
 };
 
-
 export const filterOptions = {
   category: [
     { id: "gaming", label: "Gaming" },
@@ -200,7 +214,6 @@ export const filterOptions = {
     { id: "samsung", label: "Samsung" },
   ],
 };
-
 
 export const sortOptions = [
   { id: "price-lowtohigh", label: "Price: Low to High" },

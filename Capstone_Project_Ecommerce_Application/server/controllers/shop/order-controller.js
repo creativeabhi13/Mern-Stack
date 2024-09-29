@@ -2,16 +2,17 @@
 
 import Order from "../../models/order.js";
 import Cart from "../../models/Cart.js";
-import Product from "../../models/product.js";
+import Product from "../../models/Product.js";
 import paypal from "../../helpers/paypal.js";
 import orderEmail from "../../utilities/orderEmail.js";
-
 
 
 
 export const createOrder = async (req, res) => {
   try {
     const {
+      email,
+      userName,
       userId,
       cartItems,
       addressInfo,
@@ -55,15 +56,16 @@ export const createOrder = async (req, res) => {
       ],
     };
 
+    // Create PayPal payment
     paypal.payment.create(create_payment_json, async (error, paymentInfo) => {
       if (error) {
         console.log(error);
-
         return res.status(500).json({
           success: false,
-          message: "Error while creating paypal payment",
+          message: "Error while creating PayPal payment",
         });
       } else {
+        // Save the newly created order in the database
         const newlyCreatedOrder = new Order({
           userId,
           cartId,
@@ -81,35 +83,36 @@ export const createOrder = async (req, res) => {
 
         await newlyCreatedOrder.save();
 
+        // Get the approval URL for PayPal
         const approvalURL = paymentInfo.links.find(
           (link) => link.rel === "approval_url"
         ).href;
 
-        res.status(201).json(
-          orderEmail({
-            to:email,
-            subject: "Order Confirmation",
-            name: userName,
-            email,
-            order_number: newlyCreatedOrder._id,
-            order_date: newlyCreatedOrder.orderDate,
-            order_total: newlyCreatedOrder.totalAmount,
-            store_name: "Laptop Wala",
-            link: "https://localhost:5173/shop",
-            userId: newlyCreatedOrder.userId,
-            cartId: newlyCreatedOrder.cartId,
-            cartItems: newlyCreatedOrder.cartItems,
-            addressInfo: newlyCreatedOrder.addressInfo,
-            orderStatus: newlyCreatedOrder.orderStatus,
-            paymentMethod: newlyCreatedOrder.paymentMethod,
-            paymentStatus: newlyCreatedOrder.paymentStatus,
-            orderUpdateDate: newlyCreatedOrder.orderUpdateDate,
-            paymentId: newlyCreatedOrder.paymentId,
-            payerId: newlyCreatedOrder.payerId,
-          }),
-          
-          {
-          
+        // Send order confirmation email (this should be separate from the response)
+        orderEmail({
+          to: email,
+          subject: "Order Confirmation",
+          name: userName,
+          email,
+          order_number: newlyCreatedOrder._id,
+          order_date: newlyCreatedOrder.orderDate,
+          order_total: newlyCreatedOrder.totalAmount,
+          store_name: "Laptop Wala",
+          link: "https://localhost:5173/shop",
+          userId: newlyCreatedOrder.userId,
+          cartId: newlyCreatedOrder.cartId,
+          cartItems: newlyCreatedOrder.cartItems,
+          addressInfo: newlyCreatedOrder.addressInfo,
+          orderStatus: newlyCreatedOrder.orderStatus,
+          paymentMethod: newlyCreatedOrder.paymentMethod,
+          paymentStatus: newlyCreatedOrder.paymentStatus,
+          orderUpdateDate: newlyCreatedOrder.orderUpdateDate,
+          paymentId: newlyCreatedOrder.paymentId,
+          payerId: newlyCreatedOrder.payerId,
+        });
+
+        // Respond to the client
+        return res.status(201).json({
           success: true,
           approvalURL,
           orderId: newlyCreatedOrder._id,
@@ -118,12 +121,13 @@ export const createOrder = async (req, res) => {
     });
   } catch (e) {
     console.log(e);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
-      message: "Some error occured!",
+      message: "Some error occurred!",
     });
   }
 };
+
 
 export const capturePayment = async (req, res) => {
   try {
