@@ -258,3 +258,42 @@ export const addressFormControls = [
     placeholder: "Enter any additional notes",
   },
 ];
+
+
+export const contactFormControls = [
+  {
+    label: "Name",
+    name: "name",
+    type: "text",
+    placeholder: "Enter your name",
+
+  },
+  {
+    label: "Email",
+    name: "email",
+    type: "email",
+    placeholder: "Enter your email",
+   
+  },
+  {
+    label:"Phone",
+    name:"phone",
+    type:"text",
+    placeholder:"Enter your phone number",
+
+  },
+  {
+    label: "Subject",
+    name: "subject",
+    type: "text",
+    placeholder: "Enter the subject",
+  
+  },
+  {
+    label: "Message",
+    name: "message",
+    type: "textarea",
+    placeholder: "Write your message",
+
+  },
+];

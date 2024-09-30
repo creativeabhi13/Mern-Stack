@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Received - {{store_name}}</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e4e8;
+        }
+        .header {
+            background-color: #FF6F61;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .header p {
+            font-size: 16px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        .content {
+            padding: 25px 30px;
+        }
+        .content p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+        }
+        .content ul {
+            padding: 0;
+            list-style: none;
+        }
+        .content ul li {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            color: #FF6F61;
+            font-weight: 500;
+        }
+        .footer {
+            background-color: #f4f6f9;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            border-top: 1px solid #e0e4e8;
+        }
+        .footer p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 600px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            .content p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Thank You for Reaching Out!</h1>
+            <p>Your Query Has Been Received</p>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content">
+            <p>Hello <strong>{{name}}</strong>,</p>
+            <p>Thank you for contacting us at <strong>{{store_name}}</strong>! We have received your query and will get back to you as soon as possible. Here are the details of your submission:</p>
+            <ul>
+                <li><strong>Name:</strong> {{name}}</li>
+                <li><strong>Phone:</strong> {{phone}}</li>
+                <li><strong>Email:</strong> {{email}}</li>
+                <li><strong>Subject:</strong> {{subject}}</li>
+                <li><strong>Message:</strong> {{message}}</li>
+            </ul>
+            <p>Our team is here to assist you, and you can expect a response within 24-48 hours.</p>
+            <p>In the meantime, feel free to browse our website for more information about our products and services.</p>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <p>If you have any urgent questions, please don't hesitate to reply to this email or contact our support team directly.</p>
+            <p>Best regards, <br> The <strong>{{store_name}}</strong> Team</p>
+        </div>
+    </div>
+
+</body>
+</html>
