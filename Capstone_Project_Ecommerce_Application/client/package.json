@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "name": "Creativeabhi13(Abhishek Kumar)",
+    "email": "creativeabhi13@gmail.com"
+  },
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
