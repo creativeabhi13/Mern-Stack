@@ -2,6 +2,7 @@ import {
   BadgeCheck,
   ChartNoAxesCombined,
   LayoutDashboard,
+  MessageCircleQuestion,
   ShoppingBasket,
 } from "lucide-react";
 import { Fragment } from "react";
@@ -27,6 +28,12 @@ const adminSidebarMenuItems = [
     path: "/admin/orders",
     icon: <BadgeCheck />,
   },
+  {
+    id: "contact-us",
+    label: "Contact Us",
+    path: "/admin/contact-us",
+    icon: <MessageCircleQuestion />,
+  }
 ];
 
 function MenuItems({ setOpen }) {
